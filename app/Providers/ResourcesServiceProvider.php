@@ -37,6 +37,7 @@ class ResourcesServiceProvider extends ServiceProvider
 //                $src . '/routes/web.php' => base_path('routes/web.php')
 //            ], 'goodcatch-modules-dcat');
         }
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'dcat');
     }
 
 }

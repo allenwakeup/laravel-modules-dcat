@@ -11,7 +11,6 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected $namespace = 'Goodcatch\\Modules\\Dcat\\Http\\Controllers\\';
 
     protected $path;
 
@@ -56,8 +55,39 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map ()
     {
+        $this->mapHelperRoutes();
         $this->mapWebRoutes();
+
     }
+
+    /**
+     * Define the "helper" routes for the Dcat Admin Modules.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapHelperRoutes ()
+    {
+
+        if (config('admin.helpers.enable', true) && config('app.debug')) {
+            return;
+        }
+
+        $attributes = [
+            'prefix'     => config('admin.route.prefix'),
+            'middleware' => config('admin.route.middleware'),
+        ];
+
+        Route::group($attributes, function ($router) {
+            $router->get('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\ScaffoldController@index');
+            $router->post('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\ScaffoldController@store');
+            $router->post('helpers/scaffold/table-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\ScaffoldController@table');
+            $router->get('helpers/icons-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\IconController@index');
+        });
+
+    }
+
 
     /**
      * Define the "web" routes for the application.
@@ -70,7 +100,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix ('web')
             ->middleware ('web')
-            ->namespace ($this->namespace)
             ->group ($this->getPath ('web'));
     }
 
