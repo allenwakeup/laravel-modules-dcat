@@ -1,0 +1,13 @@
+.DS_Store
+/.idea
+/vendor
+composer.phar
+composer.lock
+phpunit.phar
+*.project
+tmp/
+/auth.json
+/public
+/package.json
+/webpack.mix.js
+.phpunit.result.cache

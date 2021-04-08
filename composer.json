@@ -1,0 +1,47 @@
+{
+    "name": "goodcatch/laravel-modules-dcat",
+    "description": "Dcat Admin modules resources",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "allen",
+            "email": "ali@goodcatch.cn",
+            "homepage": "https://www.goodcatch.cn/laravel-modules-dcat",
+            "role": "Developer"
+        }
+    ],
+
+    "require": {
+        "php": ">=7.3",
+        "ext-json": "*",
+        "goodcatch/laravel-modules": "dev-master"
+    },
+    "require-dev": {
+        "illuminate/support": "^8.0",
+        "laravel/framework": "^8.0",
+        "laravel/helpers": "^1.1",
+        "laravel/laravel": "^8.0",
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Goodcatch\\Modules\\Dcat\\": "app"
+        },
+        "classmap": [
+            "database/seeds"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

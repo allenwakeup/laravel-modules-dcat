@@ -1,0 +1,15 @@
+{
+    "name": "Dcat Module",
+    "alias": "dcat",
+    "description": "Dcat Admin modules",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Goodcatch\\Modules\\Dcat\\Providers\\DcatServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "app/helpers.php"
+    ],
+    "requires": []
+}
