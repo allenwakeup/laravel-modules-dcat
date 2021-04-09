@@ -18,11 +18,9 @@
         "goodcatch/laravel-modules": "dev-master"
     },
     "require-dev": {
-        "elendev/nexus-composer-push": "^0.2.2",
-        "illuminate/support": "^8.0",
+        "elendev/nexus-composer-push": "^0.2.3",
         "laravel/framework": "^8.0",
         "laravel/helpers": "^1.1",
-        "laravel/laravel": "^8.0",
         "dcat/laravel-admin": "2.*",
         "phpunit/phpunit": "^8.5"
     },
@@ -46,8 +44,6 @@
             "ignore": [
                 "test.php",
                 "auth.json",
-                "composer.lock",
-                ".gitignore",
                 ".git",
                 ".DS_Store",
                 ".idea/",
@@ -60,15 +56,6 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://repos.goodcatch.cn/repository/goodcatch-composer-group/"
-        },
-        {
-            "packagist.org": false
-        }
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }

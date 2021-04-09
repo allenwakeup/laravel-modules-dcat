@@ -45,7 +45,7 @@
                         <select class="choose-exist-module"  name="exist-module">
                             <option value="0" selected>{{trans('dcat::admin.scaffold.choose')}}</option>
                             @foreach($modules as $module)
-                            <option value="{{ $module->getAlias() }}">{{ $module->getName() }}</option>
+                            <option value="{{ $module->getAlias() }}">{{ $module->get('order') }} - {{ $module->getName() }} ({{ $module->getAlias() }}) - {{ $module->getDescription() }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -325,8 +325,8 @@
             $fieldsBody = $('#table-fields tbody'),
             tpl = $('#table-field-tpl').html(),
             modelNamespace = '{{ str_replace('\\', '\\\\', config('modules.namespace')) }}\\__module__\\Models\\',
-            repositoryNamespace = '{{ str_replace('\\', '\\\\', config('modules.namespace')) }}\\__module__\\Repositories\\',
-            controllerNamespace = '{{ str_replace('\\', '\\\\', config('modules.namespace')) }}\\__module__\\Http\\Controllers\\',
+            repositoryNamespace = '{{ str_replace('\\', '\\\\', config('modules.namespace')) }}\\__module__\\Repositories\\Admin\\',
+            controllerNamespace = '{{ str_replace('\\', '\\\\', config('modules.namespace')) }}\\__module__\\Http\\Controllers\\Admin\\',
             dataTypeMap = {!! json_encode($dataTypeMap) !!},
             helpers = Dcat.helpers;
 

@@ -58,7 +58,7 @@ trait ModuleCreator
         if(isset($this->module)){
             $module = Module::findByAlias($this->module);
             if(isset($module)){
-                $path = $module->getPath() . 'resources/lang/' . App::getLocale();
+                $path = $module->getPath() . '/resources/lang/' . App::getLocale();
             }
         } else {
             $path = resource_path('lang/'.App::getLocale());
