@@ -15,7 +15,12 @@ Dcat Admin 2.0
 
 #### 安装教程
 
-1.  xxxx
+1.  环境配置
+
+.env文件中设置
+
+MODULE_INTEGRATE=dcat
+
 2.  xxxx
 3.  xxxx
 

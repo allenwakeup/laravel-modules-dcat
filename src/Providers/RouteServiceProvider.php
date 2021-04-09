@@ -70,7 +70,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapHelperRoutes ()
     {
 
-        if (config('admin.helpers.enable', true) && config('app.debug')) {
+        if (! config('admin.helpers.enable', true) || ! config('app.debug')) {
             return;
         }
 
@@ -80,10 +80,8 @@ class RouteServiceProvider extends ServiceProvider
         ];
 
         Route::group($attributes, function ($router) {
-            $router->get('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\ScaffoldController@index');
-            $router->post('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\ScaffoldController@store');
-            $router->post('helpers/scaffold/table-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\ScaffoldController@table');
-            $router->get('helpers/icons-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\IconController@index');
+            $router->get('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\Admin\ScaffoldController@index');
+            $router->post('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\Admin\ScaffoldController@store');
         });
 
     }

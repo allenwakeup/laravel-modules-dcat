@@ -6,5 +6,5 @@ use Dcat\Admin\Scaffold\ControllerCreator as Creator;
 
 class ControllerCreator extends Creator
 {
-
+    use ModuleCreator;
 }

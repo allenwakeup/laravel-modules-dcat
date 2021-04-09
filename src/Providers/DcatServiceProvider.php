@@ -46,7 +46,7 @@ class DcatServiceProvider extends ServiceProvider
     {
         $this->loadTranslationsFrom(
             goodcatch_vendor_path('/laravel-modules-dcat/resources/lang'),
-            'laravel-modules'
+            'dcat'
         );
     }
 

@@ -41,22 +41,11 @@
                         <span>{{(trans('dcat::admin.scaffold.module'))}}</span>
                     </div>
 
-                    <div class="col-sm-2 ">
-                        <div class="input-group">
-                            <input type="text" name="table_name" class="form-control" id="inputModuleName" placeholder="{{(trans('dcat::admin.scaffold.module'))}}" value="{{ old('module_name') }}">
-
-                        </div>
-                    </div>
-
-                    <div class=" col-sm-2" style="margin-left: -15px;">
+                    <div class=" col-sm-4">
                         <select class="choose-exist-module"  name="exist-module">
-                            <option value="0" selected>{{trans('admin.scaffold.choose')}}</option>
+                            <option value="0" selected>{{trans('dcat::admin.scaffold.choose')}}</option>
                             @foreach($modules as $module)
-                                <optgroup>
-                                    @foreach($tb as $v)
-                                        <option value="{{$module['alias']}}">{{$module['name']}}</option>
-                                    @endforeach
-                                </optgroup>
+                            <option value="{{ $module->getAlias() }}">{{ $module->getName() }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -332,13 +321,12 @@
         var $model = $('#inputModelName'),
             $controller = $('#inputControllerName'),
             $repository = $('#inputRepositoryName'),
-            $module = $('#inputModuleName'),
             $table = $('#inputTableName'),
             $fieldsBody = $('#table-fields tbody'),
             tpl = $('#table-field-tpl').html(),
-            modelNamespace = 'App\\Models\\',
-            repositoryNamespace = 'App\\Admin\\Repositories\\',
-            controllerNamespace = 'App\\Admin\\Controllers\\',
+            modelNamespace = '{{ str_replace('\\', '\\\\', config('modules.namespace')) }}\\__module__\\Models\\',
+            repositoryNamespace = '{{ str_replace('\\', '\\\\', config('modules.namespace')) }}\\__module__\\Repositories\\',
+            controllerNamespace = '{{ str_replace('\\', '\\\\', config('modules.namespace')) }}\\__module__\\Http\\Controllers\\',
             dataTypeMap = {!! json_encode($dataTypeMap) !!},
             helpers = Dcat.helpers;
 
@@ -347,7 +335,7 @@
                 success: function (data) {
                     writeController(data.value);
                     writeModel(data.value);
-                    witeRepository(data.value);
+                    writeRepository(data.value);
                 }
             });
         }, 500);
@@ -394,10 +382,8 @@
 
             //event.preventDefault();
 
-            if ($module.val() == '') {
-                $module.closest('.form-group').addClass('has-error');
+            if ($('.choose-exist-module').val() == '') {
                 $('#module-name-help').show();
-
                 return false;
             }
 
@@ -474,6 +460,13 @@
 
         });
 
+        $('.choose-exist-module').on('change', function () {
+            if($('.choose-exist-table').val()){
+                $('.choose-exist-table').trigger('onchange');
+            }
+
+        });
+
         $table.on('keyup', function (e) {
             withSingularName($(this).val());
         });
@@ -546,13 +539,13 @@
 
         function writeController(val) {
             val = ucfirst(toHump(toLine(val)));
-            $controller.val(val ? (controllerNamespace + val + 'Controller') : controllerNamespace);
+            $controller.val(val ? (switchModule(controllerNamespace) + val + 'Controller') : controllerNamespace);
         }
         function writeModel(val) {
-            $model.val(modelNamespace + ucfirst(ucfirst(toHump(toLine(val)))));
+            $model.val(switchModule(modelNamespace) + ucfirst(ucfirst(toHump(toLine(val)))));
         }
-        function witeRepository(val) {
-            $repository.val(repositoryNamespace + ucfirst(ucfirst(toHump(toLine(val)))))
+        function writeRepository(val) {
+            $repository.val(switchModule(repositoryNamespace) + ucfirst(ucfirst(toHump(toLine(val)))))
         }
 
         function getTR() {
@@ -576,6 +569,11 @@
             return str.replace(reg,function(m){
                 return m.toUpperCase()
             });
+        }
+
+        // 切换模块
+        function switchModule(source) {
+            return source.replace('__module__', ucfirst($('.choose-exist-module').val()));
         }
     });
 </script>

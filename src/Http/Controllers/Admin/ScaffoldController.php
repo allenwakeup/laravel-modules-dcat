@@ -1,6 +1,6 @@
 <?php
 
-namespace Goodcatch\Modules\Dcat\Http\Controllers;
+namespace Goodcatch\Modules\Dcat\Http\Controllers\Admin;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Http\Auth\Permission;
@@ -45,7 +45,7 @@ class ScaffoldController extends Controller
             ->title(trans('admin.scaffold.header'))
             ->description(' ')
             ->body(view(
-                'admin::helpers.scaffold',
+                'dcat::admin.helpers.scaffold',
                 compact('dbTypes', 'action', 'modules', 'tables', 'dataTypeMap')
             ));
     }
@@ -62,7 +62,7 @@ class ScaffoldController extends Controller
 
         $creates = (array) $request->get('create');
         $table = Helper::slug($request->get('table_name'), '_');
-        $module = Helper::slug($request->get('module_name'), '_');
+        $module = $request->get('exist-module');
         $controller = $request->get('controller_name');
         $model = $request->get('model_name');
         $repository = $request->get('repository_name');
@@ -72,7 +72,7 @@ class ScaffoldController extends Controller
             if (in_array('model', $creates)) {
                 $modelCreator = new ModelCreator($table, $model);
 
-                $paths['model'] = $modelCreator->create(
+                $paths['model'] = $modelCreator->withModule($module)->create(
                     $request->get('primary_key'),
                     $request->get('timestamps') == 1,
                     $request->get('soft_deletes') == 1
@@ -81,7 +81,7 @@ class ScaffoldController extends Controller
 
             // 2. Create controller.
             if (in_array('controller', $creates)) {
-                $paths['controller'] = (new ControllerCreator($controller))
+                $paths['controller'] = (new ControllerCreator($controller))->withModule($module)
                     ->create(in_array('repository', $creates) ? $repository : $model);
             }
 
@@ -89,7 +89,7 @@ class ScaffoldController extends Controller
             if (in_array('migration', $creates)) {
                 $migrationName = 'create_'.$table.'_table';
 
-                $paths['migration'] = (new MigrationCreator(app('files')))->buildBluePrint(
+                $paths['migration'] = (new MigrationCreator(app('files')))->withModule($module)->buildBluePrint(
                     $request->get('fields'),
                     $request->get('primary_key', 'id'),
                     $request->get('timestamps') == 1,
@@ -98,12 +98,12 @@ class ScaffoldController extends Controller
             }
 
             if (in_array('lang', $creates)) {
-                $paths['lang'] = (new LangCreator($request->get('fields')))
+                $paths['lang'] = (new LangCreator($request->get('fields')))->withModule($module)
                     ->create($controller, $request->get('translate_title'));
             }
 
             if (in_array('repository', $creates)) {
-                $paths['repository'] = (new RepositoryCreator())
+                $paths['repository'] = (new RepositoryCreator(app('files')))->withModule($module)
                     ->create($model, $repository);
             }
 

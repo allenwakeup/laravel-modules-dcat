@@ -18,6 +18,7 @@
         "goodcatch/laravel-modules": "dev-master"
     },
     "require-dev": {
+        "elendev/nexus-composer-push": "^0.2.2",
         "illuminate/support": "^8.0",
         "laravel/framework": "^8.0",
         "laravel/helpers": "^1.1",
@@ -27,13 +28,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Goodcatch\\Modules\\Dcat\\": "app"
+            "Goodcatch\\Modules\\Dcat\\": "src"
         },
         "classmap": [
             "database/seeds"
-        ],
-        "files": [
-            "app/helpers.php"
         ]
     },
     "autoload-dev": {
@@ -41,11 +39,36 @@
             "Tests\\": "tests/"
         }
     },
+    "extra": {
+        "nexus-push": {
+            "url": "https://repos.goodcatch.cn/repository/composer",
+            "ignore-by-git-attributes": true,
+            "ignore": [
+                "test.php",
+                "auth.json",
+                "composer.lock",
+                ".gitignore",
+                ".git",
+                ".DS_Store",
+                ".idea/",
+                "/vendor"
+            ]
+        }
+    },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repos.goodcatch.cn/repository/goodcatch-composer-group/"
+        },
+        {
+            "packagist.org": false
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
