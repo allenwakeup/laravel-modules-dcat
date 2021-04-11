@@ -3,6 +3,10 @@
 #### 介绍
 针对基于Dcat Admin项目的模块化扩展
 
+需要注意的是，由于laravel的 service provider 在第三方包中加载的顺序按包名排序加载的情况。
+「goodcatch/laravel-modules-dcat」包中service provider在「dcat/laravel-admin」之后加载。
+这样一来，势必在初始化过程中要注意次序。
+
 #### 软件架构
 软件架构说明
 

@@ -16,6 +16,7 @@ return [
         'create_model'      => 'Create model',
         'create_repository' => 'Create repository',
         'create_controller' => 'Create controller',
+        'create_route'      => 'Create route',
         'run_migrate'       => 'Run migrate',
         'create_lang'       => 'Create lang',
         'field'             => 'field',

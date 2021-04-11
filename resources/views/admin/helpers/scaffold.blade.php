@@ -11,6 +11,7 @@
         'model' => (trans('admin.scaffold.create_model')),
         'repository' => (trans('admin.scaffold.create_repository')),
         'controller' => (trans('admin.scaffold.create_controller')),
+        'route' => (trans('dcat::admin.scaffold.create_route')),
         'migrate' => (trans('admin.scaffold.run_migrate')),
         'lang' => (trans('admin.scaffold.create_lang')),
     ])->checkAll(['migrate', 'migration']);
@@ -545,7 +546,7 @@
             $model.val(switchModule(modelNamespace) + ucfirst(ucfirst(toHump(toLine(val)))));
         }
         function writeRepository(val) {
-            $repository.val(switchModule(repositoryNamespace) + ucfirst(ucfirst(toHump(toLine(val)))))
+            $repository.val(switchModule(repositoryNamespace) + ucfirst(ucfirst(toHump(toLine(val)))) + 'Repository');
         }
 
         function getTR() {

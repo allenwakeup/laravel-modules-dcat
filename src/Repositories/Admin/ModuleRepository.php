@@ -1,11 +1,11 @@
 <?php
 
-namespace {namespace};
+namespace Goodcatch\Modules\Dcat\Repositories\Admin;
 
-use {model} as Model;
+use Goodcatch\Modules\Dcat\Models\Module as Model;
 use Dcat\Admin\Repositories\EloquentRepository;
 
-class {class} extends EloquentRepository
+class ModuleRepository extends EloquentRepository
 {
     /**
      * Model.

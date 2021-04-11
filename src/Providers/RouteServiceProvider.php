@@ -30,11 +30,6 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->config = $this->app ['config']->get ('modules', []);
 
-        $this->initRoute ();
-    }
-
-    protected function initRoute ()
-    {
         $this->path = goodcatch_vendor_path ('/laravel-modules-dcat/routes');
     }
 
@@ -56,8 +51,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map ()
     {
         $this->mapHelperRoutes();
+        $this->mapAdminRoutes();
         $this->mapWebRoutes();
-
     }
 
     /**
@@ -74,18 +69,30 @@ class RouteServiceProvider extends ServiceProvider
             return;
         }
 
-        $attributes = [
-            'prefix'     => config('admin.route.prefix'),
-            'middleware' => config('admin.route.middleware'),
-        ];
-
-        Route::group($attributes, function ($router) {
-            $router->get('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\Admin\ScaffoldController@index');
-            $router->post('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\Admin\ScaffoldController@store');
-        });
+        Route::prefix(config('admin.route.prefix'))
+            ->middleware(config('admin.route.middleware'))
+            ->group(function ($router) {
+                $router->get('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\Admin\ScaffoldController@index');
+                $router->post('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\Admin\ScaffoldController@store');
+            });
 
     }
 
+
+    /**
+     * Define the "admin" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes ()
+    {
+
+        Route::prefix(config('admin.route.prefix'))
+            ->middleware(config('admin.route.middleware'))
+            ->group ($this->getPath('admin'));
+    }
 
     /**
      * Define the "web" routes for the application.
@@ -96,9 +103,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes ()
     {
-        Route::prefix ('web')
-            ->middleware ('web')
-            ->group ($this->getPath ('web'));
+
+        Route::middleware('web')
+            ->group ($this->getPath('web'));
     }
 
 }

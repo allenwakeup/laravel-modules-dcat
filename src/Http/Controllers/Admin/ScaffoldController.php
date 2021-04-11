@@ -11,7 +11,9 @@ use Goodcatch\Modules\Dcat\Scaffold\LangCreator;
 use Goodcatch\Modules\Dcat\Scaffold\MigrationCreator;
 use Goodcatch\Modules\Dcat\Scaffold\ModelCreator;
 use Goodcatch\Modules\Dcat\Scaffold\RepositoryCreator;
+use Goodcatch\Modules\Dcat\Scaffold\RouteCreator;
 use Dcat\Admin\Support\Helper;
+use Goodcatch\Modules\Dcat\Scaffold\RouterCreator;
 use Goodcatch\Modules\Facades\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -85,7 +87,13 @@ class ScaffoldController extends Controller
                     ->create(in_array('repository', $creates) ? $repository : $model);
             }
 
-            // 3. Create migration.
+            // 3. Create route.
+            if (in_array('route', $creates)) {
+                $paths['route'] = (new RouteCreator(Helper::basename($paths['model']), app('files')))->withModule($module)
+                    ->create($controller);
+            }
+
+            // 4. Create migration.
             if (in_array('migration', $creates)) {
                 $migrationName = 'create_'.$table.'_table';
 

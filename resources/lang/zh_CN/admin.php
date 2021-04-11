@@ -16,6 +16,7 @@ return [
         'create_model'      => '创建模型',
         'create_repository' => '创建数据仓库',
         'create_controller' => '创建控制器',
+        'create_route'      => '创建路由',
         'run_migrate'       => '创建数据表',
         'create_lang'       => '创建翻译文件',
         'field'             => '字段',

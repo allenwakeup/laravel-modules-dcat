@@ -2,6 +2,8 @@
 
 namespace Goodcatch\Modules\Dcat\Providers;
 
+use Dcat\Admin\Layout\Content;
+use Goodcatch\Modules\Dcat\Layout\Menu;
 use Illuminate\Support\ServiceProvider;
 
 class ResourcesServiceProvider extends ServiceProvider
@@ -24,7 +26,8 @@ class ResourcesServiceProvider extends ServiceProvider
      */
     public function register ()
     {
-
+        // 重新定义单粒 Dcat\Admin\Layout\Menu
+        $this->app->singleton('admin.menu', Menu::class);
         $this->registerViews ();
     }
 
@@ -39,5 +42,4 @@ class ResourcesServiceProvider extends ServiceProvider
         }
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'dcat');
     }
-
 }
