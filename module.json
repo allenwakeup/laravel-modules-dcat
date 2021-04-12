@@ -1,7 +1,7 @@
 {
-    "name": "Dcat Module",
+    "name": "Dcat Module Build In",
     "alias": "dcat",
-    "description": "Dcat Admin modules",
+    "description": "Integrate Dcat Admin project",
     "keywords": [],
     "order": 0,
     "providers": [
@@ -11,5 +11,7 @@
     "files": [
         "src/helpers.php"
     ],
-    "requires": []
+    "requires": [],
+    "version": "dev-master",
+    "type": 0
 }
