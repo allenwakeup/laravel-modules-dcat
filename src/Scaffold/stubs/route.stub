@@ -1,3 +1,10 @@
 <?php
 Route::get('goodcatch/laravel-modules/DummyModelName', 'DummyClass@index');
+Route::get('goodcatch/laravel-modules/DummyModelName/create', 'DummyClass@form');
+Route::get('goodcatch/laravel-modules/DummyModelName/{id}/edit', 'DummyClass@edit');
+Route::get('goodcatch/laravel-modules/DummyModelName/{id}', 'DummyClass@show');
 Route::post('goodcatch/laravel-modules/DummyModelName', 'DummyClass@store');
+Route::put('goodcatch/laravel-modules/DummyModelName/{id}', 'DummyClass@update');
+Route::delete('goodcatch/laravel-modules/DummyModelName/{id}', 'DummyClass@destroy');
+
+

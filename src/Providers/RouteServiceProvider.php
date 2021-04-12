@@ -72,8 +72,8 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix(config('admin.route.prefix'))
             ->middleware(config('admin.route.middleware'))
             ->group(function ($router) {
-                $router->get('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\Admin\ScaffoldController@index');
-                $router->post('helpers/scaffold-modules', 'Goodcatch\Modules\Dcat\Http\Controllers\Admin\ScaffoldController@store');
+                $router->get('goodcatch/laravel-modules/scaffold', 'Goodcatch\Modules\Dcat\Http\Controllers\Admin\ScaffoldController@index');
+                $router->post('goodcatch/laravel-modules/scaffold', 'Goodcatch\Modules\Dcat\Http\Controllers\Admin\ScaffoldController@store');
             });
 
     }

@@ -7,6 +7,47 @@ use Lang;
 
 class Menu extends Layout
 {
+
+    /**
+     * @var array
+     */
+    public static $goodcatchHelperNodes = [
+        [
+            'id'        => 1,
+            'title'     => 'Modules Helpers',
+            'icon'      => 'fa fa-cubes',
+            'uri'       => '',
+            'parent_id' => 0,
+        ], [
+            'id'        => 2,
+            'title'     => 'Scaffold',
+            'icon'      => '',
+            'uri'       => 'goodcatch/laravel-modules/scaffold',
+            'parent_id' => 1,
+        ]
+    ];
+
+    /**
+     * @var array
+     */
+    public static $goodcatchNodes = [
+        [
+            'id'        => 1,
+            'title'     => 'Laravel Modules',
+            'icon'      => 'fa fa-cubes',
+            'uri'       => '',
+            'parent_id' => 0,
+        ],
+        [
+            'id'        => 2,
+            'title'     => 'Module',
+            'icon'      => 'fa fa-cube',
+            'uri'       => 'goodcatch/laravel-modules/modules',
+            'parent_id' => 1,
+        ]
+    ];
+
+
     /**
      * Register menu.
      */
@@ -14,40 +55,10 @@ class Menu extends Layout
     {
         parent::register();
 
-        $this->add([
-            [
-                'id'        => 1,
-                'title'     => 'Laravel Modules',
-                'icon'      => 'fa fa-cubes',
-                'uri'       => '',
-                'parent_id' => 0,
-            ],
-            [
-                'id'        => 2,
-                'title'     => 'Module',
-                'icon'      => 'fa fa-cube',
-                'uri'       => 'goodcatch/laravel-modules/modules',
-                'parent_id' => 1,
-            ]
-        ], 20);
+        $this->add(self::$goodcatchNodes, 20);
 
         if (config('app.debug') && config('admin.helpers.enable', true)) {
-            $this->add([
-                [
-                    'id'        => 1,
-                    'title'     => 'Helpers Modules',
-                    'icon'      => 'fa fa-cubes',
-                    'uri'       => '',
-                    'parent_id' => 0,
-                ],
-                [
-                    'id'        => 2,
-                    'title'     => 'Scaffold',
-                    'icon'      => '',
-                    'uri'       => 'helpers/scaffold-modules',
-                    'parent_id' => 1,
-                ]
-            ], 20);
+            $this->add(self::$goodcatchHelperNodes, 20);
         }
     }
 

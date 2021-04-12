@@ -2,8 +2,8 @@
 
 return [
     'titles' => [
-        'laravel_modules'       => '系統模块',
+        'laravel_modules'       => '系統模塊',
         'module'                => '模塊管理',
-        'helpers_modules'       => '模塊化工具',
+        'modules_helpers'       => '模塊化工具'
     ],
 ];

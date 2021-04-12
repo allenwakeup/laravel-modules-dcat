@@ -10,6 +10,17 @@ use Dcat\Admin\Http\Controllers\AdminController;
 
 class DummyClass extends AdminController
 {
+
+    /**
+     * Get content title.
+     *
+     * @return string
+     */
+    protected function title()
+    {
+        return $this->title ?: module_admin_trans_label();
+    }
+
     /**
      * Make a grid builder.
      *
