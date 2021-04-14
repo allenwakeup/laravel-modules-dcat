@@ -46,7 +46,7 @@
                         <select class="choose-exist-module"  name="exist-module">
                             <option value="0" selected>{{trans('dcat::admin.scaffold.choose')}}</option>
                             @foreach($modules as $module)
-                            <option value="{{ $module->getAlias() }}">{{ $module->get('order') }} - {{ $module->getName() }} ({{ $module->getAlias() }}) - {{ $module->getDescription() }}</option>
+                            <option value="{{ $module->getLowerName() }}">{{ $module->get('order') }} - {{ $module->getAlias() }} ({{ $module->getName() }}) - {{ $module->getDescription() }}</option>
                             @endforeach
                         </select>
                     </div>

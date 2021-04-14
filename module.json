@@ -1,6 +1,6 @@
 {
-    "name": "Dcat Module Build In",
-    "alias": "dcat",
+    "name": "Dcat",
+    "alias": "Dcat Module Build In",
     "description": "Integrate Dcat Admin project",
     "keywords": [],
     "order": 0,

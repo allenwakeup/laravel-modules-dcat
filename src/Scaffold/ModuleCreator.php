@@ -25,11 +25,12 @@ trait ModuleCreator
      * @param string $name
      *
      * @return string
+     * @throws \ReflectionException
      */
     public function getPath($name)
     {
         if(isset($this->module)){
-            $module = Module::findByAlias($this->module);
+            $module = Module::find($this->module);
             if(isset($module)){
                 return str_replace(
                     base_path(),
@@ -56,7 +57,7 @@ trait ModuleCreator
     protected function getLangPath(string $controller)
     {
         if(isset($this->module)){
-            $module = Module::findByAlias($this->module);
+            $module = Module::find($this->module);
             if(isset($module)){
                 $path = $module->getPath() . '/resources/lang/' . App::getLocale();
             }
