@@ -14,6 +14,17 @@ use Illuminate\Support\ServiceProvider;
 class DcatServiceProvider extends ServiceProvider
 {
 
+
+    /**
+     * @var string $moduleName
+     */
+    protected $moduleName = 'Dcat';
+
+    /**
+     * @var string $moduleNameLower
+     */
+    protected $moduleNameLower = 'dcat';
+
     /**
      * Boot the application events.
      *
@@ -45,7 +56,7 @@ class DcatServiceProvider extends ServiceProvider
     public function registerTranslations()
     {
         $this->loadTranslationsFrom(
-            goodcatch_vendor_path('/laravel-modules-dcat/resources/lang'),
+            module_path($this->moduleName, 'resources/lang'),
             'dcat'
         );
     }

@@ -1,9 +1,8 @@
 <?php
 
-namespace Goodcatch\Modules\Qwshop\Database\Seeders;
+namespace Goodcatch\Modules\Dcat\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
 class DcatDatabaseSeeder extends Seeder
 {

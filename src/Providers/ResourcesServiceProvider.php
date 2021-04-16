@@ -9,6 +9,17 @@ use Illuminate\Support\ServiceProvider;
 class ResourcesServiceProvider extends ServiceProvider
 {
 
+
+    /**
+     * @var string $moduleName
+     */
+    protected $moduleName = 'Dcat';
+
+    /**
+     * @var string $moduleNameLower
+     */
+    protected $moduleNameLower = 'dcat';
+
     /**
      * Boot the application events.
      *
@@ -40,6 +51,6 @@ class ResourcesServiceProvider extends ServiceProvider
 //                $src . '/routes/web.php' => base_path('routes/web.php')
 //            ], 'goodcatch-modules-dcat');
         }
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'dcat');
+        $this->loadViewsFrom(module_path($this->moduleName, 'resources/views'),'dcat');
     }
 }

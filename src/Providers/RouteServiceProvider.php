@@ -30,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->config = $this->app ['config']->get ('modules', []);
 
-        $this->path = goodcatch_vendor_path ('/laravel-modules-dcat/routes');
+        $this->path = module_path($this->moduleName, 'routes');
     }
 
     protected function getModuleConfig ($key, $default)

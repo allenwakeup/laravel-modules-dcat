@@ -13,5 +13,6 @@
     ],
     "requires": [],
     "version": "dev-master",
-    "type": 0
+    "type": 0,
+    "namespace": "DcatAdmin"
 }

@@ -12,7 +12,7 @@
 use Illuminate\Support\Str;
 
 Route::group ([
-    'as' => 'admin'
+    'as' => 'admin::'
 ], function (){
     $routes_path = __DIR__ . '/auto';
     if (is_dir ($routes_path)) {
