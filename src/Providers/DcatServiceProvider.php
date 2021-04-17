@@ -1,6 +1,6 @@
 <?php
 
-namespace Goodcatch\Modules\Dcat\Providers;
+namespace Goodcatch\Modules\DcatAdmin\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

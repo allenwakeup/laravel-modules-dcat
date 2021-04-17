@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Goodcatch\Modules\Dcat\Contracts\Permission;
+namespace Goodcatch\Modules\DcatAdmin\Contracts\Permission;
 
 use Goodcatch\Modules\Laravel\Contracts\Auth\PermissionProvider as Permission;
 use Illuminate\Contracts\Foundation\Application;

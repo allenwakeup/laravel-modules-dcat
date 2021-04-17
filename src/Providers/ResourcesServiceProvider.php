@@ -1,9 +1,8 @@
 <?php
 
-namespace Goodcatch\Modules\Dcat\Providers;
+namespace Goodcatch\Modules\DcatAdmin\Providers;
 
-use Dcat\Admin\Layout\Content;
-use Goodcatch\Modules\Dcat\Layout\Menu;
+use Goodcatch\Modules\DcatAdmin\Layout\Menu;
 use Illuminate\Support\ServiceProvider;
 
 class ResourcesServiceProvider extends ServiceProvider

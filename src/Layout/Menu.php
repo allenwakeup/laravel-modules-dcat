@@ -1,6 +1,6 @@
 <?php
 
-namespace Goodcatch\Modules\Dcat\Layout;
+namespace Goodcatch\Modules\DcatAdmin\Layout;
 
 use Dcat\Admin\Layout\Menu as Layout;
 use Lang;

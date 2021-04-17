@@ -1,17 +1,17 @@
 <?php
 
-namespace Goodcatch\Modules\Dcat\Http\Controllers\Admin;
+namespace Goodcatch\Modules\DcatAdmin\Http\Controllers\Admin;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Http\Auth\Permission;
 use Dcat\Admin\Http\Controllers\ScaffoldController as Controller;
 use Dcat\Admin\Layout\Content;
-use Goodcatch\Modules\Dcat\Scaffold\ControllerCreator;
-use Goodcatch\Modules\Dcat\Scaffold\LangCreator;
-use Goodcatch\Modules\Dcat\Scaffold\MigrationCreator;
-use Goodcatch\Modules\Dcat\Scaffold\ModelCreator;
-use Goodcatch\Modules\Dcat\Scaffold\RepositoryCreator;
-use Goodcatch\Modules\Dcat\Scaffold\RouteCreator;
+use Goodcatch\Modules\DcatAdmin\Scaffold\ControllerCreator;
+use Goodcatch\Modules\DcatAdmin\Scaffold\LangCreator;
+use Goodcatch\Modules\DcatAdmin\Scaffold\MigrationCreator;
+use Goodcatch\Modules\DcatAdmin\Scaffold\ModelCreator;
+use Goodcatch\Modules\DcatAdmin\Scaffold\RepositoryCreator;
+use Goodcatch\Modules\DcatAdmin\Scaffold\RouteCreator;
 use Dcat\Admin\Support\Helper;
 use Goodcatch\Modules\Dcat\Scaffold\RouterCreator;
 use Goodcatch\Modules\Facades\Module;

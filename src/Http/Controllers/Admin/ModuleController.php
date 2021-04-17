@@ -1,9 +1,9 @@
 <?php
 
-namespace Goodcatch\Modules\Dcat\Http\Controllers\Admin;
+namespace Goodcatch\Modules\DcatAdmin\Http\Controllers\Admin;
 
-use Goodcatch\Modules\Dcat\Models\Module;
-use Goodcatch\Modules\Dcat\Repositories\Admin\ModuleRepository;
+use Goodcatch\Modules\DcatAdmin\Models\Module;
+use Goodcatch\Modules\DcatAdmin\Repositories\Admin\ModuleRepository;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;

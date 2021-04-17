@@ -3,7 +3,7 @@
  * @author  Allen <ali@goodcatch.cn>
  */
 
-namespace Goodcatch\Modules\Dcat\Providers;
+namespace Goodcatch\Modules\DcatAdmin\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Goodcatch\Modules\Dcat\Models;
+namespace Goodcatch\Modules\DcatAdmin\Models;
 
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 

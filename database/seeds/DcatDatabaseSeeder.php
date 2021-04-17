@@ -1,6 +1,6 @@
 <?php
 
-namespace Goodcatch\Modules\Dcat\Database\Seeders;
+namespace Goodcatch\Modules\DcatAdmin\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 

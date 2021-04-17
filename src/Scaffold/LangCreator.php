@@ -1,6 +1,6 @@
 <?php
 
-namespace Goodcatch\Modules\Dcat\Scaffold;
+namespace Goodcatch\Modules\DcatAdmin\Scaffold;
 
 use Dcat\Admin\Scaffold\LangCreator as Creator;
 
