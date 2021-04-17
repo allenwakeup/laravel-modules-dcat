@@ -5,6 +5,7 @@
 
 namespace Goodcatch\Modules\DcatAdmin\Providers;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -21,7 +22,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Create a new service provider instance.
      *
-     * @param  \Illuminate\Contracts\Foundation\Application  $app
+     * @param  Application  $app
      * @return void
      */
     public function __construct ($app)
@@ -30,7 +31,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->config = $this->app ['config']->get ('modules', []);
 
-        $this->path = module_path($this->moduleName, 'routes');
+        $this->path = $this->app ['modules.internal']->getPath() . '/routes';
     }
 
     protected function getModuleConfig ($key, $default)
